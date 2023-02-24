@@ -14,3 +14,13 @@ train_y = [1, 1, 1, 0, 0, 0]
 
 model = LinearSVC()
 model.fit(train_x, train_y)
+
+feature1 = [1, 1, 1]
+feature2 = [1, 1, 0]
+feature3 = [0, 1, 1]
+
+test_x = [feature1, feature2, feature3]
+test_y = [0, 1, 1]
+predict = model.predict(test_x)
+
+print(predict)

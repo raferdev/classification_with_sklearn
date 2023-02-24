@@ -1,5 +1,6 @@
 FROM jupyter/datascience-notebook 
 
-RUN pymp
+WORKDIR /app
 
 COPY . .
+
