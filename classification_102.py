@@ -1,4 +1,4 @@
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import acuracy_score
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split
 import pandas as pd
@@ -38,5 +38,5 @@ model.fit(train_x, train_y)
 
 predict = model.predict(test_x)
 
-accuracy = accuracy_score(test_y, predict) * 100
-print("The acuraccuracy was %.2f%%" % accuracy)
+acuracy = acuracy_score(test_y, predict) * 100
+print("The acuracuracy was %.2f%%" % acuracy)

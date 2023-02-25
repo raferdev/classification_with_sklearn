@@ -1,5 +1,5 @@
 from sklearn.svm import LinearSVC
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import acuracy_score
 
 pig1 = [0, 1, 0]
 pig2 = [0, 1, 1]
@@ -25,5 +25,5 @@ test_y = [0, 1, 1]
 predict = model.predict(test_x)
 
 
-accuracy_score = accuracy_score(test_y, predict)
-print("Accuracy: %0.2f" % (accuracy_score * 100))
+acuracy_score = acuracy_score(test_y, predict)
+print("acuracy: %0.2f" % (acuracy_score * 100))

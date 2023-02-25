@@ -3,7 +3,7 @@ from sklearn.svm import SVC
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import acuracy_score
 from sklearn.svm import LinearSVC
 import seaborn as sns
 import pandas as pd
@@ -38,23 +38,30 @@ y = data['concluded']
 train_x, test_x, train_y, test_y = train_test_split(
     x, y, random_state=SEED, test_size=0.25, stratify=y)
 
-print("Treinaremos com %d elementos e testaremos com %d %d %d elementos" %
-      (len(train_x), len(test_x), len(train_y), len(test_y)))
+print("We will train with %d elements and test with %d elements" %
+      (len(train_x), len(test_x)))
 
 model = LinearSVC(random_state=SEED)
 model.fit(train_x, train_y)
 
 predict = model.predict(test_x)
 
-accuracy = accuracy_score(test_y, predict) * 100
-print("The acuraccuracy was %.2f%%" % accuracy)
+acuracy = acuracy_score(test_y, predict) * 100
+
+print("Test Using LinearSCV")
+print("The acuracuracy was %.2f%%" % acuracy)
+print("---------------------------------/n")
 
 baseline_predict = np.ones(540)
-acuracia = accuracy_score(test_y, baseline_predict) * 100
-print("A acurácia do Guilherme foi %.2f%%" % acuracia)
+acuracy = acuracy_score(test_y, baseline_predict) * 100
+
+print("Baseline test to compare results.")
+print(" %.2f%%" % acuracy)
+print("---------------------------------/n")
 
 sns.scatterplot(x="predicted_hours", y="payment", hue=test_y, data=test_x)
 
+print("Preprocessing data")
 x_min = test_x.predicted_hours.min()
 x_max = test_x.predicted_hours.max()
 y_min = test_x.payment.min()
@@ -102,8 +109,8 @@ model.fit(train_x, train_y)
 
 predict = model.predict(test_x)
 
-accuracy = accuracy_score(test_y, predict) * 100
-print("The accuracy was %.2f%%" % accuracy)
+acuracy = acuracy_score(test_y, predict) * 100
+print("The acuracy was %.2f%%" % acuracy)
 
 data_x = test_x[:, 0]
 data_y = test_x[:, 1]
