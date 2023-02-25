@@ -3,7 +3,7 @@ from sklearn.svm import SVC
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import acuracy_score
+from sklearn.metrics import accuracy_score
 from sklearn.svm import LinearSVC
 import seaborn as sns
 import pandas as pd
@@ -46,17 +46,17 @@ model.fit(train_x, train_y)
 
 predict = model.predict(test_x)
 
-acuracy = acuracy_score(test_y, predict) * 100
+accuracy = accuracy_score(test_y, predict) * 100
 
 print("Test Using LinearSCV")
-print("The acuracuracy was %.2f%%" % acuracy)
+print("The acuraccuracy was %.2f%%" % accuracy)
 print("---------------------------------/n")
 
 baseline_predict = np.ones(540)
-acuracy = acuracy_score(test_y, baseline_predict) * 100
+accuracy = accuracy_score(test_y, baseline_predict) * 100
 
 print("Baseline test to compare results.")
-print(" %.2f%%" % acuracy)
+print(" %.2f%%" % accuracy)
 print("---------------------------------/n")
 
 sns.scatterplot(x="predicted_hours", y="payment", hue=test_y, data=test_x)
@@ -79,7 +79,6 @@ coord = np.c_[xx.ravel(), yy.ravel()]
 Z = model.predict(coord)
 Z = Z.reshape(xx.shape)
 
-
 plt.scatter(test_x.predicted_hours, test_x.payment, c=test_y, s=1)
 plt.contourf(xx, yy, Z, alpha=0.3)
 
@@ -100,17 +99,18 @@ scaler.fit(raw_train_x)
 
 train_x = scaler.transform(raw_train_x)
 test_x = scaler.transform(raw_test_x)
+print("Rescaled data to best accuracy using SVC model")
 
-print("Treinaremos com %d elementos e testaremos com %d %d %d elementos" %
-      (len(train_x), len(test_x), len(train_y), len(test_y)))
+print("We will train with %d elements and test with %d elements" %
+      (len(train_x), len(test_x)))
 
 model = SVC(gamma='auto')
 model.fit(train_x, train_y)
 
 predict = model.predict(test_x)
 
-acuracy = acuracy_score(test_y, predict) * 100
-print("The acuracy was %.2f%%" % acuracy)
+accuracy = accuracy_score(test_y, predict) * 100
+print("The accuracy was %.2f%%" % accuracy)
 
 data_x = test_x[:, 0]
 data_y = test_x[:, 1]
