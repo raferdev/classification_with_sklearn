@@ -25,5 +25,5 @@ test_y = [0, 1, 1]
 predict = model.predict(test_x)
 
 
-taxa_de_acerto = accuracy_score(test_y, predict)
-print("Accuracy: %0.2f" % (taxa_de_acerto * 100))
+accuracy_score = accuracy_score(test_y, predict)
+print("Accuracy: %0.2f" % (accuracy_score * 100))
