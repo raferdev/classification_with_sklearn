@@ -1,0 +1,11 @@
+FROM python:latest
+
+RUN apt-get -y update &&  apt -y update
+RUN pip3 install -U scikit-learn
+RUN pip3 install -U pandas
+
+WORKDIR /app
+
+COPY . .
+
+CMD [ "python","./classification_102.py" ]
