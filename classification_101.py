@@ -1,4 +1,5 @@
 from sklearn.svm import LinearSVC
+from sklearn.metrics import accuracy_score
 
 pig1 = [0, 1, 0]
 pig2 = [0, 1, 1]
@@ -23,4 +24,6 @@ test_x = [feature1, feature2, feature3]
 test_y = [0, 1, 1]
 predict = model.predict(test_x)
 
-print(predict)
+
+taxa_de_acerto = accuracy_score(test_y, predict)
+print("Accuracy: %0.2f" % (taxa_de_acerto * 100))
