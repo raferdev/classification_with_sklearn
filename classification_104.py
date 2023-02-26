@@ -34,24 +34,24 @@ train_x, test_x, train_y, test_y = train_test_split(x, y, test_size=0.25,
 print("Trained with %d elements and test with %d elements" %
       (len(train_x), len(test_x)))
 
-modelo = LinearSVC()
-modelo.fit(train_x, train_y)
-preddict = modelo.predict(test_x)
+model = LinearSVC()
+model.fit(train_x, train_y)
+preddict = model.predict(test_x)
 
-acuracia = accuracy_score(test_y, preddict) * 100
-print("The accuracy was %.2f%%" % acuracia)
+accuracy = accuracy_score(test_y, preddict) * 100
+print("The accuracy was %.2f%%" % accuracy)
 
 
 dummy = DummyClassifier()
 dummy.fit(train_x, train_y)
 preddict = dummy.predict(test_x)
 
-acuracia = accuracy_score(test_y, preddict) * 100
-print("The Dummy accuracy was %.2f%%" % acuracia)
+accuracy = accuracy_score(test_y, preddict) * 100
+print("The Dummy accuracy was %.2f%%" % accuracy)
 
 dummy_mostfrequent = DummyClassifier(strategy="most_frequent")
 dummy_mostfrequent.fit(train_x, train_y)
 predict = dummy_mostfrequent.predict(test_x)
 
-acuracia = accuracy_score(test_y, predict) * 100
-print("The Dummy (most frequent) accuracy was %.2f%%" % acuracia)
+accuracy = accuracy_score(test_y, predict) * 100
+print("The Dummy (most frequent) accuracy was %.2f%%" % accuracy)
