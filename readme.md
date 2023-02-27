@@ -14,7 +14,7 @@
 
 <p align="center">
 
-This is a ML project
+This is a project divided in 4 parts to learn how use machine learning classification using Sklearn library. I made this project based on course ministred on [Alura](https://cursos.alura.com.br/).
 
 </p>
 
@@ -32,7 +32,7 @@ This is a ML project
 
 ## 🧐 About <a name = "about"></a>
 
-This project is used to generate one simple online chat, which store participants, messages and logs. It's serve the <a href="https://github.com/raferdev/batepapo-uol">frontend</a> and can verify the body of requests to maintain the business rules.
+The projects are divided on python files, the first is classificaiton_101,second ...\_102,... The complexity are encreased on each project, to run this files i made a docker file to each python file. So you can go to [Getting Started](#getting_started) below and copy the commands to run on your desktop easily.
 
 ---
 
@@ -65,151 +65,66 @@ And use the step-by-step doc to download and install on your specific system.
 1 - Clone on your local system
 
 ```
-git clone https://github.com/raferdev/batepapo-uol-api
+git clone https://github.com/raferdev/classification_with_sklearn
 ```
 
 2 - Go to project path
 
 ```
-cd batepapo-uol-api
+cd classification_with_sklearn
 ```
-
-3 - Create env file
-
-You can rename the ".env.exemple" file to ".env", just removing ".exemple" and save, or follow this steps to create new one:
-
-- Open a text editor or other editor do you prefeer, create this variables like below and save file with name '.env'.
-
-```
-MONGO_URI=mongodb://mongodb:27017/
-PORT_HOST=5000
-```
-
-You can change the values of variables if you want or need.
 
 ### Start
 
+To simplify the command i choose to use the build and run command on the same input, making a little weird, but this just create a new image and start the container.
+
 Use on terminal:
 
+To run the first python file, _classification_101.py_
+
 ```
-npm run start
+docker run -it $(docker build -q .)
 ```
 
-_The attached console will show "Hello i'm running on port = (PORT)" and after some mongodb logs._
+To run the _classification_102.py_.
+
+```
+docker run -it $(docker build -q . -f Dockerfile.102)
+```
+
+To run the _classification_103.py_.
+
+```
+docker run -it $(docker build -q . -f Dockerfile.103)
+```
+
+To run the _classification_104.py_.
+
+```
+docker run -it $(docker build -q . -f Dockerfile.104)
+```
+
+You will see the docker downloading the packages he need to create and start the environment and after that a log with the inputs of the classification predicties.
+
+_Doesn't are really cool if you don't understand what are going but works!_
 
 ---
 
 ## 🎈 Usage <a name="usage"></a>
 
-Now you will need one tool to make requests and interact whith your API. Some famous API Clients are <a href="https://insomnia.rest/download">Insomnia</a>, <a href="https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client">Thunder CLient</a> to VSCode users, <a href="https://www.postman.com/">Postman</a> and many others, like browsers plugins. If you dont use to complex jobs any of these will help you.
-
-- **GUIDE** :
-
-  **HTTP METHOD** - _/route_ - Little description of it behaviour.
-
-  ```
-    Received or sended object schema.
-    Ex: {
-    "text":"Lorem ipsum..."
-    }
-  ```
-
-  _Final thoughts about API behaviour_
-
-  ***
-
-  Exemple:
-
-  **GET** - _/health_ - API return status 200 with object below.
-
-  ```
-  {
-    "message":"I'm Alive!"
-  }
-  ```
-
-  Simple way to verify if API is up. _Maybe is not implemented on this project_
-
-  ***
-
-  **Usage** - In this case you will make a GET request on http://localhost:5000/health. And will receive the JSON object "message: I'm Alive!" on the console, terminal or display, depending on the case.
-
-  ***
-
-**LET'S GO** - API description.
-
-**POST** - _/participants_ - API verify existing users online with same name and, if don't have, includes user on mongoDB.
-
-```
-  {
-  "name":""
-  }
-```
-
-This route have setTimeout to verify activity, if user frontend dont send new requests in 10 seconds, this user are removed.
-
-**GET** - _/participants_ - API return one array with online users.
-
-```
-  [{
-   "name":"john"
-  },{
-   "name":"will"
-  },...]
-```
-
-**POST** - _/messages_ - Send message to API redirect for one user or all chat.
-
-HEADER:
-
-```
-{
-  "user":""
-}
-```
-
-BODY:
-
-```
-{
-  "to":"",
-  "text":"",
-  "type":""
-}
-```
-
-Valid types: ["message", "private_message"].
-
-"message": all users can see on chat.
-
-"private_message": only the one user you sended.
-
-**PUT** - _/messages/:message_id_ - User can edit the message, need id from mongoDB.
-
-```
-{
-  "to":"",
-  "text":"",
-  "type":""
-}
-```
-
-**DELETE** - _/messages/:message_id_ - User can delete the message.
-
-```
-{}
-```
-
----
+After running the docker command the terminal will go show a logs about the predicties and others details about the project. These logs are very descritive and nothing more like percentages and numbers the algoritm about was fit.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [NodeJS](https://nodejs.org/en/docs/) - Backend Language
-- [Express](https://expressjs.com/pt-br/) - Node Framework
+- [Python](https://www.python.org/) - Programming Language
+- [Sklearn](https://scikit-learn.org/stable/) - Machine Learn library in Python
 - [Docker](https://www.docker.com/) - Container Technology
+- [Matplotlib](https://matplotlib.org/) - Data visualization library in Python
+- [Seaborn](https://seaborn.pydata.org/index.html) - Based on Matplotlib and have high level interface.
 
 ---
 
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@raferdev](https://github.com/raferdev)
+- [@alura](https://github.com/alura-cursos)
